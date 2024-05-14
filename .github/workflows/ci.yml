@@ -56,3 +56,14 @@ jobs:
       with:
         name: test-results
         path: reports/test-results.xml
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: . # Adjust this if your project is in a subdirectory
+          args: >
+            -Dsonar.projectKey=kenlong2206_trade-assistant-fastapi
+            -Dsonar.organization=your_organization_key
+            -Dsonar.host.url=https://sonarcloud.io # or your SonarQube server URL
