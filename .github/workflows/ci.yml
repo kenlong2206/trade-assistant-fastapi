@@ -47,7 +47,6 @@ jobs:
 
     - name: Run Pytest tests with junit xml output
       run: python -m pytest --junitxml=reports/test-results.xml
-      run: echo "::
 
     - name: Process test results
       uses: mikepenz/action-junit-report@v2
