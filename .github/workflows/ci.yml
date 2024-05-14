@@ -59,11 +59,11 @@ jobs:
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectBaseDir: . # Adjust this if your project is in a subdirectory
-          args: >
-            -Dsonar.projectKey=kenlong2206_trade-assistant-fastapi
-            -Dsonar.organization=kenlong2206
-            -Dsonar.host.url=https://sonarcloud.io # or your SonarQube server URL
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        projectBaseDir: . # Adjust this if your project is in a subdirectory
+        args: >
+          -Dsonar.projectKey=kenlong2206_trade-assistant-fastapi
+          -Dsonar.organization=kenlong2206
+          -Dsonar.host.url=https://sonarcloud.io # or your SonarQube server URL
