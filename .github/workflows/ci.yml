@@ -37,6 +37,8 @@ jobs:
         pip install pytest
         pip install httpx
         pip install pytest-asyncio
+        pip install fastapi
+        pip install pydantic
 
     - name: Run tests
       run: pytest
