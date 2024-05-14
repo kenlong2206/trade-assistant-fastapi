@@ -65,5 +65,5 @@ jobs:
           projectBaseDir: . # Adjust this if your project is in a subdirectory
           args: >
             -Dsonar.projectKey=kenlong2206_trade-assistant-fastapi
-            -Dsonar.organization=your_organization_key
+            -Dsonar.organization=kenlong2206
             -Dsonar.host.url=https://sonarcloud.io # or your SonarQube server URL
