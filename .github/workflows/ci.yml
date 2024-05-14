@@ -58,3 +58,41 @@ jobs:
       uses: mikepenz/action-junit-report@v2
       with:
         report_paths: 'reports/test-results.xml'
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install httpx
+        pip install pytest-asyncio
+        pip install fastapi
+        pip install pydantic
+
+    - name: Run Pytest tests
+      run: python -m pytest
+
+    - name: Run Pytest tests with junit xml output
+      run: python -m pytest --junitxml=reports/test-results.xml
+
+    - name: Process test results
+      uses: mikepenz/action-junit-report@v2
+      with:
+        report_paths: 'reports/test-results.xml'
