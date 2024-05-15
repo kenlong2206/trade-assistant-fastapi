@@ -52,7 +52,7 @@ jobs:
       continue-on-error: true
 
     - name: Run Pytest tests
-      run: python -m pytest --junitxml=reports/xunit-results.xml
+      run: python -m pytest --junitxml=reports/xunit-result.xml
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
