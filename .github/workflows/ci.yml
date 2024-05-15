@@ -15,7 +15,6 @@ on:
       - develop
       - 'release/*'
 
-
 jobs:
   build:
     strategy:
