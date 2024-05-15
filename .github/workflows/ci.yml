@@ -41,8 +41,10 @@ jobs:
         pip install fastapi
         pip install pydantic
         pip install tox
+        pip install pytest-cov
+        pip install coverage
 
-    - name: Run tox
+    - name: Run tox to configure the tests
       run: tox -e py
 
     - name: Lint with Ruff
@@ -51,8 +53,8 @@ jobs:
         ruff --output-format=github .
       continue-on-error: true
 
-    - name: Run Pytest tests
-      run: python -m pytest --junitxml=reports/xunit-result.xml
+    - name: Run Pytest tests with coverage
+      run: python -m pytest --junitxml=reports/xunit-result.xml --cov=your_package_name --cov-report=xml
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
@@ -70,4 +72,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: reports/xunit-result.xml
+        path: |
+          reports/xunit-result.xml
+          coverage.xml
