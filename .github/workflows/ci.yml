@@ -40,6 +40,10 @@ jobs:
         pip install pytest-asyncio
         pip install fastapi
         pip install pydantic
+        pip install tox
+
+    - name: Run tox
+        run: tox -e py
 
     - name: Lint with Ruff
       run: |
