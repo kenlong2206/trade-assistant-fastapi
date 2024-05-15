@@ -54,7 +54,7 @@ jobs:
       continue-on-error: true
 
     - name: Run Pytest tests with coverage
-      run: python -m pytest --junitxml=reports/xunit-result.xml --cov=your_package_name --cov-report=xml
+      run: python -m pytest --cov=your_package_name --cov-report=xml --junitxml=reports/xunit-result.xml
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
@@ -66,6 +66,7 @@ jobs:
         args: >
           -Dsonar.host.url=https://sonarcloud.io 
           -Dsonar.python.xunit.reportPath=reports/xunit-result.xml
+          -Dsonar.python.coverage.reportPaths=reports/coverage.xml
           -Dsonar.python.version=3
 
     - name: Upload test results
@@ -74,4 +75,4 @@ jobs:
         name: test-results
         path: |
           reports/xunit-result.xml
-          coverage.xml
+          reports/coverage.xml
