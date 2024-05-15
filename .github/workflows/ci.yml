@@ -43,7 +43,7 @@ jobs:
         pip install tox
 
     - name: Run tox
-        run: tox -e py
+      run: tox -e py
 
     - name: Lint with Ruff
       run: |
